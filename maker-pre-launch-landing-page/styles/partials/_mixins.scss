@@ -1,0 +1,48 @@
+@use "./variables" as *; 
+
+@mixin tablet {
+    @media screen and (min-width: $tablet-breakpoint) {
+      @content;
+    }
+  }
+  @mixin desktop {
+    @media screen and (min-width: $desktop-breakpoint) {
+      @content;
+    }
+  }
+
+
+
+
+  // margins and padding 
+
+  @mixin component-padding-top-bottom {
+    padding-top: $mobile-padding;
+    padding-bottom: $mobile-padding;
+    @include tablet {
+      padding-top: $tablet-padding;
+      padding-bottom: $tablet-padding;
+    }
+  }
+  
+  @mixin component-margin-top-bottom {
+    margin-top: $mobile-margin;
+    margin-bottom: $mobile-margin;
+    @include tablet {
+      margin-top: $tablet-margin;
+      margin-bottom: $tablet-margin;
+    }
+  }
+
+  @mixin margin {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    @include tablet {
+      margin-left: 2.25rem;
+      margin-right: 2.25rem;
+    }
+    @include desktop {
+      margin: auto;
+      max-width: 1110px;
+    }
+  }
