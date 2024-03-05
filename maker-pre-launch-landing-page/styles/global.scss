@@ -1,18 +1,8 @@
 @use "./partials/mixins" as *;
 @use "./partials/variables" as *;
 
-/* variables  */
-:root {
-    --main-bg-blue: #080C20;
-    --main-white: #FFFFFF;
-    --main-green: #3EE9E5;
-    --secondary-bg-blue: #093F68;
-    --secondary-bg-grey:#777F98;
-    --error-red:#FF2965;
-  }
 
 body {
-
     background-color: $main-bg-blue;
     color: $main-white;
     font-family: "Manrope", sans-serif;
@@ -48,6 +38,7 @@ h1 {
     font-size: 32px;
     @include tablet {
         font-size: 48px;
+        margin: 0;
     }
 }
 
@@ -57,17 +48,16 @@ h2 {
 }
 
 .green {
-    color: var(--main-green);
+    color: $main-green;
 }
 
 .subheading-text {
-    color: var(--secondary-bg-grey);
+    color: $secondary-bg-grey;
     text-align: center;
     font-size: 15px;
 }
 
 .hero {
-    // width: 100%;
     &__mobile-img {
         height: 360px;
         width: 100%;
@@ -94,6 +84,15 @@ h2 {
         }
     }
 
+    &__text {
+        color: $secondary-bg-grey;
+        width: 325px;
+        text-align: center;
+        font-size: 15px;
+        line-height: 25px;
+        @include component-margin-top-bottom;
+    }
+
     &__img {
         display: none;
         @include tablet {
@@ -108,29 +107,14 @@ h2 {
     &__bg-squiggle {
         display: none;
         @include tablet {
-            display:block;
+            display: block;
             position: absolute;
             z-index: -1;
             object-fit: cover;
-            // width: 100%;
         }
     }
-
-    // &__heading {
-    // }
 }
 
-.hero__text {
-    color: var(--secondary-bg-grey);
-    width: 325px;
-    text-align: center;
-    font-size: 15px;
-    line-height: 25px;
-}
-
-.scroll-icon {
-    margin: 0.5rem 0;
-}
 
 .spacer {
     height: 80px;
@@ -138,9 +122,8 @@ h2 {
 
 
 
-
 .illustration-container {
-    background-color: var(--secondary-bg-blue);
+    background-color: $secondary-bg-blue;
     width: 120px;
     height: 124px;
     border-radius: 45px;
@@ -149,11 +132,6 @@ h2 {
         width: 160px;
         height: 164px;
     }
-
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
 
     @include tablet {
         margin-right: 55px;
@@ -164,16 +142,11 @@ h2 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* height: 80px; */
-    /* background-color: var(--secondary-bg-blue); */
-    /* width: 80px; */
 }
 
 .services {
     margin: 0 auto;
-    // width: 90%;
     @include margin;
-    // height;
 
     &__text-container {
         text-align: center;
@@ -190,7 +163,7 @@ h2 {
         @include desktop {
             flex-direction: row;
             min-height: 380px;
-            margin: 4rem 0;
+            margin: 4rem 1rem;
             max-width: 100%;
         }
     }
@@ -202,12 +175,10 @@ h2 {
         align-items: center;
         justify-content: center;
         margin: 40px 0;
-
         @include tablet {
             flex-direction: row;
             align-items: flex-start;
             margin: 40px 30px;
-
 
             &:nth-child(1) {
                 justify-content: flex-start;
@@ -260,17 +231,17 @@ h2 {
 
     &__container {
         position: relative;
-        // margin: 0 1.5rem;
         @include component-margin-top-bottom;
         border-radius: 8px;
-        
-        
 
         &:nth-child(1) {
             background-color: $secondary-bg-blue;
             @include tablet {
                 margin-right: 1.5rem;
                 max-height: 501px;
+            }
+            @include desktop {
+                margin: 2rem 1.5rem;
             }
         }
 
@@ -281,7 +252,9 @@ h2 {
                 margin-left: 1.5rem;
                 height: 528px;
                 padding-top: 24px;
-                
+            }
+            @include desktop {
+                margin: 2rem 1.5rem;
             }
         }
 
@@ -321,10 +294,6 @@ h2 {
     }
 
 }
-
-// #c2 {
-//     padding-top: 2rem;
-// }
 
 li {
     margin-bottom: 12px;
@@ -395,8 +364,6 @@ ul {
         font-size: 15px;
         font-weight: 600;
         color: $secondary-bg-grey;
-        // @include component-margin-top-bottom; 
-        // margin: 24px 8px;
         margin-bottom: 24px;
         width: 100%;
         box-sizing: border-box;
@@ -452,5 +419,50 @@ ul {
 .hidden {
     display: none;
 }
+
+
+// scroll button 
+@keyframes an-ms {
+    0% {
+            opacity: 1;
+        top:5%;
+    }
+    15% {
+        opacity: 1;
+        top:30%;
+    }
+    50% {
+        opacity: 0;
+        top:30%;
+    }
+    100% {
+        opacity: 0;
+        top:5%;
+    }
+}
+
+.scroll-bttn {
+    width: 22px;
+    height: 38px;
+    border:2px solid $main-green;
+    border-top-right-radius: 28px;
+    border-top-left-radius: 28px;
+    border-bottom-right-radius: 28px;
+    border-bottom-left-radius: 28px;
+    cursor:pointer;
+    position:relative
+
+}
+.scroll-dot {
+    display: block;
+    position: absolute;
+    width:3px;
+    height: 3px;
+    border-radius:50%;
+    border:2px solid $main-green;
+    left: 7.5px;
+    animation:an-ms 3s linear infinite
+}
+            
 
 
